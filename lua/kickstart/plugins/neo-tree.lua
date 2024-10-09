@@ -36,6 +36,7 @@ return {
           ['\\'] = 'close_window',
           ['<Tab>'] = { 'toggle_preview', config = { use_float = false, use_image_nvim = true } },
         },
+        -- This is also another test change
       },
     },
   },
