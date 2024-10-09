@@ -969,6 +969,8 @@ require('lazy').setup({
 })
 
 vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree float git_status<CR>', { noremap = true, silent = true })
+-- Map <leader>x to close the current buffer
+vim.api.nvim_set_keymap('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true })
 --this is another test change
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
