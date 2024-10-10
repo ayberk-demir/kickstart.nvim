@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -936,10 +935,12 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.aerial',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gruvbox',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.debug', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.dashboard', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -969,9 +970,11 @@ require('lazy').setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree float git_status<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true })
 -- Map <leader>x to close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true })
---this is another test change
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldenable = false  -- Disable auto-folding on file open
+vim.opt.foldlevel = 99      -- Start with all folds open
