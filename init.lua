@@ -100,7 +100,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -375,15 +375,43 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      local actions = require 'telescope.actions'
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          layout_strategy = 'vertical',
+          sorting_strategy = 'ascending',
+          layout_config = {
+            vertical = {
+              height = 0.9,
+              preview_cutoff = 40,
+              prompt_position = 'top',
+              width = 0.6,
+              preview_height = 0.7
+            },
+            -- height = 0.9, -- Adjust the overall height (optional)
+            preview_cutoff = 40, -- When preview starts (optional)
+          },
+          mappings = {
+            i = {
+              -- ['<c-enter>'] = 'to_fuzzy_refine',
+              ['<C-d>'] = actions.delete_buffer,
+              ['<Tab>'] = actions.move_selection_next, -- Tab to move forward
+              ['<S-Tab>'] = actions.move_selection_previous, -- Shift-Tab to move backward
+              ['<C-p>'] = actions.move_selection_previous, -- Mark/unmark buffer with Ctrl+p
+              ['<C-n>'] = actions.toggle_selection, -- Mark/unmark buffer with Ctrl+n
+            },
+            n = {
+              ['<C-d>'] = actions.delete_buffer,
+              ['<Tab>'] = actions.move_selection_next, -- Tab to move forward
+              ['<S-Tab>'] = actions.move_selection_previous, -- Shift-Tab to move backward
+              ['<C-p>'] = actions.move_selection_previous, -- Mark/unmark buffer with Ctrl+p
+              ['<C-n>'] = actions.toggle_selection, -- Mark/unmark buffer with Ctrl+n
+            },
+          },
+        },
         -- pickers = {
         -- current_buffer_fuzzy_find = true,
         -- },
@@ -412,13 +440,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      local builtin = require 'telescope.builtin'
       local themes = require 'telescope.themes'
 
       local function current_buffer_fuzzy_find_with_preview()
         builtin.current_buffer_fuzzy_find(themes.get_dropdown {
           winblend = 10, -- Transparency for the floating window
           previewer = true, -- Enable preview window
+          layout_strategy = 'vertical',
+          layout_config = {
+            width = 0.6, -- Set the width of the floating window (80% of the screen)
+            height = 0.8, -- Set the height of the floating window (60% of the screen)
+            preview_cutoff = 20, -- Show preview for larger windows
+            preview_height = 0.65,
+          },
         })
       end
 
@@ -973,8 +1007,8 @@ require('lazy').setup({
 vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true })
 -- Map <leader>x to close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldenable = false  -- Disable auto-folding on file open
-vim.opt.foldlevel = 99      -- Start with all folds open
+vim.opt.foldenable = false -- Disable auto-folding on file open
+vim.opt.foldlevel = 99 -- Start with all folds open
