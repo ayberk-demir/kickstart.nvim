@@ -653,6 +653,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        jsonls = {},
         pyright = {
           settings = {
             python = {
@@ -695,6 +696,8 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'black',
         'isort',
+        'prettier',
+        'prettierd',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -751,7 +754,7 @@ require('lazy').setup({
         python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
       },
     },
   },
