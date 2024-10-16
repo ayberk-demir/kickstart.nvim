@@ -3,6 +3,8 @@ return {
   config = function()
     require('aerial').setup {
       -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+      manage_folds = false,
+      link_tree_to_folds = false,
       layout = {
         max_width = 0.6,
         min_width = 0.25,
