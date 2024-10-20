@@ -377,6 +377,17 @@ require('lazy').setup({
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       local actions = require 'telescope.actions'
+      local action_state = require 'telescope.actions.state'
+
+      local function move_selection_up(prompt_bufnr)
+        local current_picker = action_state.get_current_picker(prompt_bufnr)
+        current_picker:set_selection(current_picker:get_selection_row() - 1)
+      end
+
+      local function move_selection_down(prompt_bufnr)
+        local current_picker = action_state.get_current_picker(prompt_bufnr)
+        current_picker:set_selection(current_picker:get_selection_row() + 1)
+      end
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
@@ -390,7 +401,7 @@ require('lazy').setup({
               preview_cutoff = 40,
               prompt_position = 'top',
               width = 0.6,
-              preview_height = 0.7
+              preview_height = 0.7,
             },
             -- height = 0.9, -- Adjust the overall height (optional)
             preview_cutoff = 40, -- When preview starts (optional)
@@ -401,15 +412,15 @@ require('lazy').setup({
               ['<C-d>'] = actions.delete_buffer,
               ['<Tab>'] = actions.move_selection_next, -- Tab to move forward
               ['<S-Tab>'] = actions.move_selection_previous, -- Shift-Tab to move backward
-              ['<C-p>'] = actions.move_selection_previous, -- Mark/unmark buffer with Ctrl+p
-              ['<C-n>'] = actions.toggle_selection, -- Mark/unmark buffer with Ctrl+n
+              ['<C-p>'] = move_selection_down, -- Mark/unmark buffer with Ctrl+p
+              ['<C-n>'] = move_selection_up, -- Mark/unmark buffer with Ctrl+n
             },
             n = {
               ['<C-d>'] = actions.delete_buffer,
               ['<Tab>'] = actions.move_selection_next, -- Tab to move forward
               ['<S-Tab>'] = actions.move_selection_previous, -- Shift-Tab to move backward
-              ['<C-p>'] = actions.move_selection_previous, -- Mark/unmark buffer with Ctrl+p
-              ['<C-n>'] = actions.toggle_selection, -- Mark/unmark buffer with Ctrl+n
+              ['<C-p>'] = move_selection_up, -- Mark/unmark buffer with Ctrl+p
+              ['<C-n>'] = move_selection_down, -- Mark/unmark buffer with Ctrl+n
             },
           },
         },
@@ -431,11 +442,11 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       -- Changing the default behaviour
       vim.keymap.set('n', '<leader>sf', function()
-        require('telescope.builtin').find_files({
+        require('telescope.builtin').find_files {
           no_ignore = true,
           no_ignore_parent = true,
-          hidden = true
-        })
+          hidden = true,
+        }
       end, { desc = '[S]earch [F]iles including gitignored' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -763,7 +774,7 @@ require('lazy').setup({
         python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -1017,7 +1028,7 @@ require('lazy').setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true, desc = "Git Status"})
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true, desc = 'Git Status' })
 -- Map <leader>x to close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
