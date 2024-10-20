@@ -315,6 +315,7 @@ require('lazy').setup({
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
+        { '<leader>g', group = '[G]it' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
@@ -986,6 +987,7 @@ require('lazy').setup({
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.debug', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.dashboard', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.harpoon', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1015,7 +1017,7 @@ require('lazy').setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true, desc = "Git Status"})
 -- Map <leader>x to close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
