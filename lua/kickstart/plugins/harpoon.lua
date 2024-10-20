@@ -76,10 +76,10 @@ return {
         :find()
     end
 
-    -- vim.keymap.set('n', '<C-e>', function()
-    --   toggle_telescope(harpoon:list())
-    -- end, { desc = 'Open harpoon window' })
+    vim.keymap.set('n', '<C-e>', function()
+      toggle_telescope(harpoon:list())
+    end, { desc = 'Open harpoon window' })
 
-    vim.api.nvim_set_keymap('n', '<C-e>', '<cmd>Telescope harpoon marks<CR>', { noremap = true, silent = true })
+    -- vim.api.nvim_set_keymap('n', '<C-e>', '<cmd>Telescope harpoon marks<CR>', { noremap = true, silent = true })
   end,
 }
