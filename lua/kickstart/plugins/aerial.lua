@@ -18,8 +18,8 @@ return {
         "Module",
         "Method",
         "Struct",
-        "Variable",
-        "Variables"
+        -- "Variable",
+        -- "Variables"
       },
       on_attach = function(bufnr)
         -- Jump forwards/backwards with '{' and '}'
