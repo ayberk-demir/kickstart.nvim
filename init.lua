@@ -363,11 +363,9 @@ require('lazy').setup({
       --  :Telescope help_tags
       --
       -- After running this command, a window will open up and you're able to
-      -- type in the prompt window. You'll see a list of `help_tags` options and
-      -- a corresponding preview of the help.
+      -- type in the prompt window. You'll see a list of `help_tags` options and a corresponding preview of the help.
       --
-      -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
+      -- Two important keymaps to use while in Telescope are: - Insert mode: <c-/>
       --  - Normal mode: ?
       --
       -- This opens a window that shows you all of the keymaps for the current
@@ -443,9 +441,6 @@ require('lazy').setup({
       -- Changing the default behaviour
       vim.keymap.set('n', '<leader>sf', function()
         require('telescope.builtin').find_files {
-          no_ignore = true,
-          no_ignore_parent = true,
-          hidden = true,
         }
       end, { desc = '[S]earch [F]iles including gitignored' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
