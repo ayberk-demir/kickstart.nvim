@@ -143,7 +143,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -669,6 +669,7 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         jsonls = {},
+        clangd = {},
         pyright = {
           settings = {
             python = {
@@ -1032,7 +1033,7 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false -- Disable auto-folding on file open
 vim.opt.foldlevel = 99 -- Start with all folds open
-vim.opt.tabstop = 2        -- Number of spaces that a <Tab> in the file counts for
-vim.opt.shiftwidth = 2     -- Number of spaces to use for each step of (auto)indent
+vim.opt.tabstop = 4        -- Number of spaces that a <Tab> in the file counts for
+vim.opt.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true   -- Use spaces instead of tabs
 
