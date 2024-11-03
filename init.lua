@@ -1032,3 +1032,7 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false -- Disable auto-folding on file open
 vim.opt.foldlevel = 99 -- Start with all folds open
+vim.opt.tabstop = 2        -- Number of spaces that a <Tab> in the file counts for
+vim.opt.shiftwidth = 2     -- Number of spaces to use for each step of (auto)indent
+vim.opt.expandtab = true   -- Use spaces instead of tabs
+
