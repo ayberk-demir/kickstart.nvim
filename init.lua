@@ -996,6 +996,7 @@ require('lazy').setup({
   require 'kickstart.plugins.dashboard', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.harpoon', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.treesitter-context', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.surround', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
