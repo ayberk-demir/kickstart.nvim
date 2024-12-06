@@ -1039,3 +1039,10 @@ vim.opt.tabstop = 4        -- Number of spaces that a <Tab> in the file counts f
 vim.opt.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true   -- Use spaces instead of tabs
 
+-- Map 'ga' to Document Symbols
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>ga',
+  '<cmd>lua require("navigator.symbols").document_symbols()<CR>',
+  { noremap = true, silent = true }
+)
