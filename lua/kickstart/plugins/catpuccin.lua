@@ -12,6 +12,11 @@ return {
           Search = { fg = colors.crust, bg = colors.yellow },
           Visual = { bg = colors.surface1, style = { 'bold' } },
           CursorLine = { bg = colors.surface2 },
+          -- Add debugger-related highlights
+          DapBreakpoint = { fg = colors.red, style = { 'bold' } },
+          DapBreakpointLine = { bg = colors.red, style = { 'bold' } },
+          DapLogPoint = { fg = colors.yellow, style = { 'italic' } },
+          DapStopped = { fg = colors.green, bg = colors.surface1 },
         }
       end,
       background = { -- :h background

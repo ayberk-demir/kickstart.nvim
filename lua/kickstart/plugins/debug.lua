@@ -92,13 +92,12 @@ return {
       },
     }
 
-
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Python DAP configuration
-    require('dap-python').setup(vim.fn.exepath('python'))
+    require('dap-python').setup(vim.fn.exepath 'python')
     -- Install golang specific config
     require('dap-go').setup {
       delve = {
@@ -107,5 +106,13 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+    vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpointLine', numhl = '' })
+    vim.fn.sign_define('DapBreakpointCondition', { text = '◆', texthl = 'DapBreakpointCondition', linehl = 'DapBreakpointLine', numhl = '' })
+    vim.fn.sign_define('DapLogPoint', { text = '◆', texthl = 'DapLogPoint', linehl = 'DapLogPointLine', numhl = '' })
+    vim.fn.sign_define('DapStopped', { text = '→', texthl = 'DapStopped', linehl = 'DapStoppedLine', numhl = '' })
+    vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#FF0000', bg = '', bold = true })
+    vim.api.nvim_set_hl(0, 'DapBreakpointLine', { bg = '#3c3836' }) -- Highlight the entire line for breakpoints
+    vim.api.nvim_set_hl(0, 'DapStopped', { fg = '#00FF00', bg = '', bold = true })
+    vim.api.nvim_set_hl(0, 'DapStoppedLine', { bg = '#3c3836' })
   end,
 }
