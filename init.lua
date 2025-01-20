@@ -422,6 +422,15 @@ require('lazy').setup({
             },
           },
         },
+        pickers = {
+          lsp_document_symbols = {
+            theme = "dropdown",
+            layout_config = {
+              width = 0.5,
+              height = 0.5,
+            },
+          },
+        },
         -- pickers = {
         -- current_buffer_fuzzy_find = true,
         -- },
@@ -955,7 +964,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' , 'python'},
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -966,6 +975,7 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      fold = {enable = true}
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -990,14 +1000,16 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.aerial',
   require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gruvbox',
+  require 'kickstart.plugins.lualine',
+  -- require 'kickstart.plugins.gruvbox',
+  require 'kickstart.plugins.catpuccin',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.debug', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.dashboard', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.harpoon', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.treesitter-context', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.surround', -- adds gitsigns recommend keymaps
-  require 'kickstart.plugins.navigator', -- adds gitsigns recommend keymaps
+  -- require 'kickstart.plugins.navigator', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1030,19 +1042,13 @@ require('lazy').setup({
 vim.api.nvim_set_keymap('n', '<leader>gs', ':Neotree git_status<CR>', { noremap = true, silent = true, desc = 'Git Status' })
 -- Map <leader>x to close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldenable = false -- Disable auto-folding on file open
+vim.opt.foldenable = true -- Disable auto-folding on file open
 vim.opt.foldlevel = 99 -- Start with all folds open
 vim.opt.tabstop = 4        -- Number of spaces that a <Tab> in the file counts for
 vim.opt.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true   -- Use spaces instead of tabs
 
--- Map 'ga' to Document Symbols
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>ga',
-  '<cmd>lua require("navigator.symbols").document_symbols()<CR>',
-  { noremap = true, silent = true }
-)
+-- vim.api.nvim_set_hl(0, 'WinBar', { fg = '#cdd6f4', bg = '#1e1e2e', bold = true }) -- Active winbar
+-- vim.api.nvim_set_hl(0, 'WinBarNC', { fg = '#888888', bg = '#1e1e2e' }) -- Inactive winbar
