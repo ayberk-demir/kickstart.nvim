@@ -4,6 +4,11 @@ return {
   config = function()
     require('catppuccin').setup {
       flavour = 'mocha', -- latte, frappe, macchiato, mocha
+      color_overrides = {
+        mocha = {
+          custom_delimiter = '#FF5F87', -- Example: Custom pink for delimiters
+        },
+      },
       custom_highlights = function(colors)
         -- Use 'colors' instead of 'palette' to access the theme's color palette
         return {
@@ -12,6 +17,11 @@ return {
           Search = { fg = colors.crust, bg = colors.yellow },
           Visual = { bg = colors.surface1, style = { 'bold' } },
           CursorLine = { bg = colors.surface2 },
+          ['@punctuation.bracket'] = { fg = colors.flamingo, style = { 'bold' } },
+          -- Set parentheses, brackets, and braces to a distinct color
+          Delimiter = { fg = colors.peach, bold = true },
+          -- Optional: Adjust comment color to ensure it's distinct
+          Comment = { fg = colors.overlay1, italic = true },
         }
       end,
       background = { -- :h background
@@ -44,13 +54,15 @@ return {
         operators = {},
         -- miscs = {}, -- Uncomment to turn off hard-coded styles
       },
-      color_overrides = {},
       default_integrations = true,
       integrations = {
         cmp = true,
         gitsigns = true,
         nvimtree = true,
+        dap = true,
+        dap_ui = true,
         treesitter = true,
+        which_key = true,
         notify = true,
         mini = {
           enabled = true,
