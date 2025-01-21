@@ -1049,7 +1049,10 @@ vim.opt.foldlevel = 99 -- Start with all folds open
 vim.opt.tabstop = 4        -- Number of spaces that a <Tab> in the file counts for
 vim.opt.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true   -- Use spaces instead of tabs
-
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.foldlevelstart = 1
+vim.opt.foldnestmax = 4
 -- vim.api.nvim_set_hl(0, 'WinBar', { fg = '#cdd6f4', bg = '#1e1e2e', bold = true }) -- Active winbar
 -- vim.api.nvim_set_hl(0, 'WinBarNC', { fg = '#888888', bg = '#1e1e2e' }) -- Inactive winbar
 -- vim.api.nvim_set_hl(0, 'DapBreakpoint', {fg = '#FF0000', bg = '', bold = true})
