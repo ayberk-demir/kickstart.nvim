@@ -723,6 +723,7 @@ require('lazy').setup({
         'isort',
         'prettier',
         'prettierd',
+        'pylint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -996,7 +997,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.aerial',
   require 'kickstart.plugins.neo-tree',
