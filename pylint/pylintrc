@@ -1,5 +1,5 @@
 [MESSAGES CONTROL]
-disable=unused-import,unused-variable,no-member,too-few-public-methods
+disable=unused-import,unused-variable,no-member,too-few-public-methods,broad-exception-caught
 [FORMAT]
 max-line-length=120
 
