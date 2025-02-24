@@ -424,7 +424,7 @@ require('lazy').setup({
         },
         pickers = {
           lsp_document_symbols = {
-            theme = "dropdown",
+            theme = 'dropdown',
             layout_config = {
               width = 0.5,
               height = 0.5,
@@ -449,8 +449,7 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       -- Changing the default behaviour
       vim.keymap.set('n', '<leader>sf', function()
-        require('telescope.builtin').find_files {
-        }
+        require('telescope.builtin').find_files {}
       end, { desc = '[S]earch [F]iles including gitignored' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -686,6 +685,7 @@ require('lazy').setup({
                 typeCheckingMode = 'basic', -- Options: off, basic, strict
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true, -- Better type inference in libraries
+                pythonPath = vim.fn.exepath ('python'),
               },
             },
           },
@@ -965,7 +965,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' , 'python'},
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -976,7 +976,7 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
-      fold = {enable = true}
+      fold = { enable = true },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -1047,11 +1047,11 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = true -- Disable auto-folding on file open
 vim.opt.foldlevel = 99 -- Start with all folds open
-vim.opt.tabstop = 4        -- Number of spaces that a <Tab> in the file counts for
-vim.opt.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent
-vim.opt.expandtab = true   -- Use spaces instead of tabs
-vim.opt.foldtext = ""
-vim.opt.foldcolumn = "0"
+vim.opt.tabstop = 4 -- Number of spaces that a <Tab> in the file counts for
+vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.foldtext = ''
+vim.opt.foldcolumn = '0'
 vim.opt.foldlevelstart = 1
 vim.opt.foldnestmax = 4
 -- vim.api.nvim_set_hl(0, 'WinBar', { fg = '#cdd6f4', bg = '#1e1e2e', bold = true }) -- Active winbar
