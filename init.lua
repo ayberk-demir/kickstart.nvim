@@ -686,6 +686,9 @@ require('lazy').setup({
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true, -- Better type inference in libraries
                 pythonPath = vim.fn.exepath ('python'),
+                diagnosticMode = "workspace",
+                reportMissingStubs = true,
+
               },
             },
           },
