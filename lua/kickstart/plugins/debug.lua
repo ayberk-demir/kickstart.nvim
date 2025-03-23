@@ -98,6 +98,24 @@ return {
 
     -- Python DAP configuration
     require('dap-python').setup(vim.fn.exepath 'python')
+
+    -- Append the new configuration to the existing configurations
+    table.insert(dap.configurations.python, {
+      type = 'python',
+      request = 'attach',
+      name = 'Attach to Docker',
+      connect = {
+        host = '127.0.0.1',
+        port = 5678,
+      },
+      pathMappings = {
+        {
+          localRoot = vim.fn.getcwd(), -- Local project directory
+          remoteRoot = '/app', -- Remote directory in the container
+        },
+      },
+      justMyCode = false, -- Debug third-party libraries if needed
+    })
     -- Install golang specific config
     require('dap-go').setup {
       delve = {
