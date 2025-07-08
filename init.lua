@@ -213,6 +213,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+vim.diagnostic.config({
+    virtual_text = { spacing = 4, prefix = '●' },
+    signs = true,
+    underline = true,
+    severity_sort = true,
+    update_in_insert = false,
+})
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -517,8 +524,8 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      {'williamboman/mason-lspconfig.nvim', version = "1.32.0"},
-      {'WhoIsSethDaniel/mason-tool-installer.nvim', commit="4aa03a08c3705e622f2e7886783fd450f7749cdd"},
+      { 'williamboman/mason-lspconfig.nvim', version = '1.32.0' },
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim', commit = '4aa03a08c3705e622f2e7886783fd450f7749cdd' },
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -685,10 +692,9 @@ require('lazy').setup({
                 typeCheckingMode = 'basic', -- Options: off, basic, strict
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true, -- Better type inference in libraries
-                pythonPath = vim.fn.exepath ('python'),
-                diagnosticMode = "workspace",
+                pythonPath = vim.fn.exepath 'python',
+                diagnosticMode = 'workspace',
                 reportMissingStubs = true,
-
               },
             },
           },
@@ -706,6 +712,11 @@ require('lazy').setup({
               -- diagnostics = { disable = { 'missing-fields' } },
             },
           },
+        },
+        html = {}, -- HTML LSP
+        cssls = {}, -- CSS LSP
+        emmet_ls = { -- Emmet (optional but helpful)
+          filetypes = { 'html', 'css', 'scss', 'javascriptreact', 'typescriptreact' },
         },
       }
 
@@ -731,7 +742,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed={},
+        ensure_installed = {},
         automatic_installation = false,
         handlers = {
           function(server_name)
@@ -1015,7 +1026,6 @@ require('lazy').setup({
   require 'kickstart.plugins.harpoon', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.treesitter-context', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.surround', -- adds gitsigns recommend keymaps
-  -- require 'kickstart.plugins.navigator', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
