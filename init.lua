@@ -1073,3 +1073,4 @@ vim.opt.foldnestmax = 4
 -- vim.api.nvim_set_hl(0, 'WinBarNC', { fg = '#888888', bg = '#1e1e2e' }) -- Inactive winbar
 -- vim.api.nvim_set_hl(0, 'DapBreakpoint', {fg = '#FF0000', bg = '', bold = true})
 -- vim.api.nvim_set_hl(0, 'DapBreakpointLine', {bg = '#2c323c'}) -- Highlight the entire line
+-- testtt
