@@ -524,8 +524,8 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      { 'williamboman/mason-lspconfig.nvim', version = '1.32.0' },
-      { 'WhoIsSethDaniel/mason-tool-installer.nvim', commit = '4aa03a08c3705e622f2e7886783fd450f7749cdd' },
+      { 'williamboman/mason-lspconfig.nvim'},
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim'},
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
